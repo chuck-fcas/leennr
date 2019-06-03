@@ -1,0 +1,4 @@
+"0","tribble("
+"0","  ~rate_book, ~complexity, "
+"0","  ""Homeowners"", ho_rate_tables %>% sapply(nrow) %>% prod"
+"0","  )"

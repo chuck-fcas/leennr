@@ -1,0 +1,9 @@
+"0","predict %>%  
+  ggplot + 
+  geom_hex(aes(x = premium, y = premium - y_hat)) +
+  xlab(""Premium"") +
+  ylab(""Premium - Fitted Value"")
+"
+"2","Error: You're passing a function as global data.
+Have you misspelled the `data` argument in `ggplot()`
+"
