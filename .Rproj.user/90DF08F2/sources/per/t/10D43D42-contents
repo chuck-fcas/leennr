@@ -337,7 +337,7 @@ uniform_dist_iid <-
   bind_cols %>% 
   cbind(policy_number = 1:nrow(.) %>% str_pad(nchar(n_draw), pad = "0"), .)
 
-uniform_dist_iid
+uniform_dist_iid %>% as_tibble
 ```
 
 Next, retrieve the rating factors and apply them according to the rating algorithm steps to generate premium as follows.  One thing to mention here.  In reality a policy can have multiple credits but this code only randomly draws one from the credit table the way it is setup.  This doesn't take away from our experiment.
