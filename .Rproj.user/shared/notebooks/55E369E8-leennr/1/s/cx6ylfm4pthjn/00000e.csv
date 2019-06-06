@@ -1,4 +1,0 @@
-"0","model %>% build() %>%  summary()
-"
-"2","Error in build(.) : could not find function ""build""
-"

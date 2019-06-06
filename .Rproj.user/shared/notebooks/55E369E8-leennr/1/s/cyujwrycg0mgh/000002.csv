@@ -1,4 +1,3 @@
-"0",""
 "0","# Need to use the formula we already laid out above somehow.  This is just to keep going."
 "0","uniform_dist_iid_rating <-"
 "0","  ho_rate_tables %>% "

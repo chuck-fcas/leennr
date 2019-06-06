@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+library(lubridate)
 ```
 
 ## Abstract
@@ -28,7 +29,7 @@ How does it handle mutiple writing companies.  Once state versus another.  State
 
 **Availability.** The data source if the most important aspect.  The data needs to be from the direct source of the data.  A downstream source will lose information.
 
-**Keywords.** Neural Networks; Extension of Exposures; 
+**Keywords.** Neural Networks; Extension of Exposures; Parallelogram Method; Onleveling;
 
 
 ## Introduction
@@ -209,7 +210,8 @@ ho_rate_tables <-
         ,470,1.63
         ,485,1.66
         ,500,1.69
-        ,15 ,0.03),
+        # ,15 ,0.03   Can't do each additional right now.
+        ),
     tbl_territory =
       tribble(
         ~territory,     ~value,
@@ -312,6 +314,9 @@ tribble(
 
 To get get started we need data that contains rating characteristics. These rating characteristics (also called features) will be passed through a rate book to generate premiums.  In this section, we create datasets using the rating examples we saw in the last section.  Effectively, we can generate a book of business with any particular mix we like. This will come in handy later when test assumptions and prove the merits of this approach.
 
+
+
+
 ### Uniformly Distributed, Independent Mix, with Exact Features
 
 Let's define what is meant by uniformly distributed, independent mix, with exact features.
@@ -343,7 +348,6 @@ uniform_dist_iid %>% as_tibble
 Next, retrieve the rating factors and apply them according to the rating algorithm steps to generate premium as follows.  One thing to mention here.  In reality a policy can have multiple credits but this code only randomly draws one from the credit table the way it is setup.  This doesn't take away from our experiment.
 
 ```{r}
-
 # Need to use the formula we already laid out above somehow.  This is just to keep going.
 uniform_dist_iid_rating <-
   ho_rate_tables %>% 
@@ -385,6 +389,37 @@ This is great result. The ratings factors themselves are generated using loss co
 
 ### Not Uniformly Distributed, Dependent Mix of Business
 
+### Generating Historical Book of Business
+
+To this point we have generated datasets that mirror what we'll call a quoting environment rather than a policy writing environment. A quoting environment is only generating full-term premiums based on the characteristics provided.  The policy writing system includes endorsements which can generate .  The main reason for the differences is simple: time. Quoting is at one point in time with rating features fixed, but a policy can change during it's term.  In other words, the rating features can change over the life of the policy contract.
+
+In this section we develop a mock historical book of business.  To keep it simple, we are not going to use new business and retention assumptions.  In other words, we will start with one set of simulated policy data and age it to simulate five years worth of premium data.  Policies falling off the book and new business coming on will shift the mix but for it isn't needed for now.  In addition, we are not going to 
+
+#### Uniformly Distributed
+
+```{r}
+uniform_dist_iid$policy_year <- 
+  Sys.Date() %>% 
+  lubridate::year() - 5
+
+bob_uniform_dist_iid <-
+  uniform_dist_iid %>% 
+  mutate(
+    policy_year = policy_year + 1,
+    aoi         = (1.05 * aoi) %>% round
+    )
+  lubridate::ceiling_date(unit = "years") - 1
+  lubridate::floor_date(unit = "years")
+  lubridate::year()
+
+# An example of sampling dates
+# sample(seq(as.Date('1999/01/01'), as.Date('2000/01/01'), by="day"), nrow(uniform_dist_iid), replace = TRUE)
+```
+
+#### Rate Book Changes
+
+
+
 ### Extreme Sample Bias
 
 What if 90% of the data was male rather than female.
@@ -395,10 +430,11 @@ What if 90% of the data was male rather than female.
 
 Data has to be on some exposure basis with each record (row) containing the premium target.  Each row is a training example.  See premium_data\@ref[premium_data] for more detail. Data must also be hot key encoded before processing as well.
 
-The `keras` package offers a great way to quickly fit neural nets for research. Refer to the `keras` package for more detail and everything you need to know about modeling with `keras`. The [Keras site](https://keras.rstudio.com/) is a great place to start. 
+The `keras` package offers a great way to quickly fit neural nets for research. Refer to the `keras` package for more detail and most everything you need to know about modeling with `keras`. The [Keras site](https://keras.rstudio.com/) is a great place to start.  I'm using the GPU setup of tensorflow--- it takes longer to setup but it fits the model much faster.
 
 ```{r echo = FALSE}
 library(keras)
+# keras::install_keras(tensorflow = "gpu")
 
 set.seed(5555)
 index_sample <- sample(0.8 * nrow(uniform_dist_iid))
@@ -432,26 +468,25 @@ We keep the model pretty simple for now.  The ReLu activation is used to keep th
 ```{r}
 model <- 
   keras_model_sequential() %>% 
-  layer_dense(units = 50, activation = 'linear') %>% 
-  layer_dense(units = 30, activation = 'linear') %>%
-  layer_dense(units = 20, activation = 'linear') %>%
+  layer_dense(units = 64, activation = 'linear', input_shape = c(x_train %>% ncol)) %>% 
+  layer_dense(units = 32, activation = 'linear') %>%
   layer_dense(units = 1 , activation = 'relu')
 
 model %>% compile(
-  loss = 'mean_squared_error',
+  loss = 'mean_absolute_error',
   optimizer = optimizer_rmsprop()
 )
 ```
-
 ### First Time leennR
 
-Fitting the model is simple. The model is trained for 300 epochs.
+Fitting the model is quite simple. The model is trained for 300 epochs.
 
-```{r echo = FALSE}
+```{r first_time_leennr_fit, echo = FALSE}
 history <- 
   model %>% 
   fit(
-  x_train, y_train, 
+  x_train,
+  y_train, 
   epochs = 300, 
   batch_size = 128, 
   validation_split = 0.2,
@@ -468,6 +503,8 @@ plot(history)
 mse <- history$metrics$loss %>% tail(., 1) / nrow(x_train) 
 
 paste0("Mean absolute error on test set: $", sprintf("%.2f", mse))
+
+model %>% evaluate(x_test, y_test)
 ```
 
 We can plot how far off the predictions are with histograms.  The results show we have some additional research to perform if we want to refine the accuracy further.
@@ -491,29 +528,34 @@ predict_test <-
       predict(x_test)) %>% 
   as_tibble
 
-predict %>%  
-  ggplot + 
-  geom_jitter(aes(x = premium, y = abs(y_hat - premium)/premium)) +
-  xlab("Premium") +
-  ylab("Absolute Error as % of Premium")
+# predict %>%  
+#   ggplot + 
+#   geom_jitter(aes(x = premium, y = abs(y_hat - premium)/premium)) +
+#   xlab("Premium") +
+#   ylab("Absolute Error as % of Premium")
 
 predict %>%  
   ggplot + 
   geom_hex(aes(x = premium, y = premium - y_hat)) +
   xlab("Premium") +
-  ylab("Premium - Fitted Value")
-
-predict_test %>%  
-  ggplot + 
-  geom_jitter(aes(x = premium, y = abs(y_hat - premium)/premium)) +
-  xlab("Premium") +
-  ylab("Absolute Error as % of Premium")
+  ylab("Premium - Fitted Value") 
+# predict_test %>%  
+#   ggplot + 
+#   geom_jitter(aes(x = premium, y = abs(y_hat - premium)/premium)) +
+#   xlab("Premium") +
+#   ylab("Absolute Error as % of Premium")
 
 predict_test %>%  
   ggplot + 
   geom_hex(aes(x = premium, y = premium - y_hat)) +
   xlab("Premium") +
-  ylab("Premium - Fitted Value")
+  ylab("Premium - Fitted Value") 
+```
+
+```{r}
+uniform_dist_iid %>% 
+  ggplot + 
+  geom_histogram(aes(x = premium))
 ```
 
 ### Randomness and error of fit
@@ -531,6 +573,9 @@ The P method assumes the following:
 The goal is to reasonably approximate rate changes for the 
 
 ### Simulate Rate Changes - this is needed to 
+
+
+
 
 ### Simulate Written Premium Transactions
 
