@@ -1,0 +1,14 @@
+# leennr Proof of Concept {#poc}
+
+There are two different parts to the `leennr` proof of concept.  First, can fitting neural networks approximate extension of exposures within a reasonable tolerance and second, the more difficult can we use the neural nets as a valid rating algorithm, i.e. can we file it?
+
+In section \@ref(first_time_fit) we showed how to fit a neural network to premium data.  The next step is to expand on this idea and determine if the method does reasonably well modeling a rate structure to re-rate polices to a specific rate book (i.e. rate level).
+
+## Simulate Rate Changes - this is needed to 
+
+The goal is to reasonably approximate rate changes for a book business.
+
+## Simulate Written Premium Transactions
+
+Does it matter if we use earnings or written premiuums
+

@@ -1,0 +1,49 @@
+# Research {#research}
+
+Further research needs to be done in order to justify this work with the department of insurance.  In other words, what guidance can be provided so that departments of insurance can accept this method.
+
+Here we resarch possible pitfalls with this method and the limitations.  Also, can we use these models for production purposes.  
+
+## Number of Price Points and Needed Layers
+
+
+
+## Testing Missing Features
+
+
+
+## Is it right?
+
+Depends on the data.  If the insurance data is wrong it produce correct onleveled premiums for the actuary but it will not point out production problems in rating.  
+
+A few rating examples can datermine.
+
+
+## Method
+
+How am I approaching data creation.
+
+### Does it matter if we do not correlation among cohorts?
+
+#### Without correlation
+
+#### With correlation
+
+## More
+
+### Rating Expert Feedback
+
+Feedback is very important to any model.  Individual rating examples provided by actuarial or other staff 
+
+### Revisiting Rating Examples with Deeper Nets
+
+With all the background up to this point we introduce depper networks to represenet non-linear rating example.
+
+
+## Copybooks and COBOL
+
+A COBOL copybook is a selection of code that defines data structures. If a particular data structure is used in many programs, then instead of writing the same data structure again, we can use copybooks. Many insurance companies utilize an old IBM mainframe and likely use copybooks to describe rating data.  The great thing about copybooks is that it is organized data and it uses codes (hexidecimal) to reduce space.  
+
+Chuck, can you show a copybook format and make sure it works with NNs.
+
+

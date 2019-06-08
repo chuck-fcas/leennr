@@ -1,0 +1,3 @@
+# About the Author {-}
+
+**Chuck Lindberg** is a Fellow of the Casualty Actuarial Society who studied mathematics at Utah Valley University.  He has ten years of experience in US Property & Casualty insurance with applications in predictice modeling and data science.  Lindberg is a strong advocate for modern actuarial best practices to include reproducibility and make it simpler for actuaries to research, analyze, and interpret rather than crunch figures.

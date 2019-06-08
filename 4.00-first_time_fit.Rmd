@@ -1,0 +1,147 @@
+# Learning Extension of Exposures - Fitting a Dataset {#first_time}
+
+## Data Preparation and Required Packages
+
+Data has to be on some exposure basis with each record (row) containing the premium target.  Each row is a training example.  See premium_data\@ref[premium_data] for more detail. Data must also be hot key encoded before processing as well.
+
+The `keras` package offers a great way to quickly fit neural nets for research. Refer to the `keras` package for more detail and most everything you need to know about modeling with `keras`. The [Keras site](https://keras.rstudio.com/) is a great place to start.  I'm using the GPU setup of tensorflow--- it takes longer to setup but it fits the model much faster.
+
+```{r echo = FALSE}
+library(keras)
+# keras::install_keras(tensorflow = "gpu")
+
+set.seed(5555)
+
+ho_uniform_iid <- read_rds("ho_uniform_iid.Rds")
+index_sample <- sample(0.8 * nrow(ho_uniform_iid))
+
+x_train <- ho_uniform_iid[ index_sample,] %>% select(-premium, -policy_number, -peril)
+y_train <- ho_uniform_iid[ index_sample,] %>% select( premium) %>% as.matrix
+x_test  <- ho_uniform_iid[-index_sample,] %>% select(-premium, -policy_number, -peril)
+y_test  <- ho_uniform_iid[-index_sample,] %>% select( premium) %>% as.matrix
+
+x_train <- 
+  x_train %>% 
+  mutate_if(is.factor, as.numeric) %>% 
+  mutate_if(is.factor, to_categorical) %>% 
+  bind_cols %>% 
+  as.matrix
+
+x_test <- 
+  x_test %>% 
+  mutate_if(is.factor, as.numeric) %>% 
+  mutate_if(is.factor, to_categorical) %>% 
+  bind_cols %>% 
+  as.matrix
+```
+
+Note we did not scale any of the features or the output.  This is not best practice.  Because we're not using many features, the dataset is pretty small (e.g. `r n_draw` rows) and we know the range of premiums is limited from `r min(ho_uniform_iid$premium)` to `r max(ho_uniform_iid$premium)` it won't take extra computational time.
+
+## Model Setup
+
+We keep the model pretty simple for now.  The ReLu activation is used to keep things greater than zero and not limited by a maximum.
+ 
+```{r}
+model <- 
+  keras_model_sequential() %>% 
+  layer_dense(units = 64, activation = 'linear', input_shape = c(x_train %>% ncol)) %>% 
+  layer_dense(units = 32, activation = 'linear') %>%
+  layer_dense(units = 1 , activation = 'relu')
+
+model %>% compile(
+  loss = 'mean_absolute_error',
+  optimizer = optimizer_rmsprop()
+)
+```
+
+## First Time leennR
+
+Fitting the model is quite simple. This model will is trained for 300 epochs.
+
+```{r first_time_leennr_fit, eval = FALSE}
+history <- 
+  model %>% 
+  fit(
+  x_train,
+  y_train, 
+  epochs = 300, 
+  batch_size = 128, 
+  validation_split = 0.2,
+  )
+```
+
+```{r echo = FALSE, include = FALSE, eval = FALSE}
+model %>% save(file = "data/model_first_time_fit.Rds")
+history %>% write_rds("data/history_first_time_fit.Rds")
+```
+
+```{r echo = FALSE}
+load("data/model_first_time_fit.Rds")
+history <- read_rds("data/history_first_time_fit.Rds")
+```
+
+The model summary, the fitting history, and the mean squared error are as follows. 
+
+```{r fig.align = 'center'}
+model %>% summary()
+plot(history)
+mse <- history$metrics$loss %>% tail(., 1) / nrow(x_train) 
+paste0("Mean absolute error on test set: $", sprintf("%.2f", mse))
+```
+
+We can plot how far off the predictions are with histograms.  The results show we have some additional research to perform if we want to refine the accuracy further.
+
+```{r}
+predict <-
+  x_train %>% 
+  cbind.data.frame(
+    y_train, 
+    y_hat = 
+      model %>% 
+      predict(x_train)) %>% 
+  as_tibble
+
+predict_test <-
+  x_test %>% 
+  cbind.data.frame(
+    y_train, 
+    y_hat = 
+      model %>% 
+      predict(x_test)) %>% 
+  as_tibble
+
+# predict %>%  
+#   ggplot + 
+#   geom_jitter(aes(x = premium, y = abs(y_hat - premium)/premium)) +
+#   xlab("Premium") +
+#   ylab("Absolute Error as % of Premium")
+
+predict %>%  
+  ggplot + 
+  geom_hex(aes(x = premium, y = premium - y_hat)) +
+  xlab("Premium") +
+  ylab("Premium - Fitted Value") 
+# predict_test %>%  
+#   ggplot + 
+#   geom_jitter(aes(x = premium, y = abs(y_hat - premium)/premium)) +
+#   xlab("Premium") +
+#   ylab("Absolute Error as % of Premium")
+
+predict_test %>%  
+  ggplot + 
+  geom_hex(aes(x = premium, y = premium - y_hat)) +
+  xlab("Premium") +
+  ylab("Premium - Fitted Value") 
+```
+
+```{r}
+predict %>% 
+  ggplot + 
+  geom_histogram(aes(x = premium, color = "premium"), binwidth = 50, color = "darkorange3", fill = "white") +
+  geom_histogram(aes(x = y_hat), binwidth = 50, color = "darkblue", fill = "white") +
+  xlab("Premium Bin") +
+  ylab("Number of Training Examples") +
+  theme_bw()
+```
+
+

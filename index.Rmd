@@ -1,0 +1,55 @@
+--- 
+title: "Learning Extension of Exposures with Neural Networks in R"
+author: "Charles Lindberg, FCAS"
+date: "`r Sys.Date()`"
+knit: "bookdown::render_book"
+documentclass: "krantz"
+bibliography: ["packages.bib"]
+biblio-style: "apalike"
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+fontsize: 12pt
+monofont: "Source Code Pro"
+monofontoptions: "Scale=0.7"
+---
+
+```{r setup, include=FALSE}
+options(
+  htmltools.dir.version = FALSE,
+  formatR.indent = 2,
+  width = 55,
+  digits = 4,
+  warnPartialMatchAttr = FALSE,
+  warnPartialMatchDollar = FALSE
+)
+
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(lubridate)
+
+# Automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages()
+), 'packages.bib')
+```
+
+# Abstract {-}
+
+<b>Motivation.</b> Insurance rating algorithms are becoming more complex as companies replatform to new technologies, find more ways to segment costs, and identify and adapt to new data sources. Over the years a company may have licensed many writing companies each with their "code" or rating algorithm across multiple systems with varying versions of code. This makes it difficult to rate policies in batch. IT and actuaries do not have the ability to do this. 
+
+Replatforming is becoming more and more of an issue.
+
+<b>Method.</b> It is standard practice to onlevel policy premiums to current (or possibly prior) rate levels and it is best practice to use some adaptation of extension of exposures.  A theory is proposed when data is missing.  Variability should not be an issue- rating algorithms are a closed system so there should be very little variability or not at all.
+
+<b>Results.</b> As long as premiums are rated correctly.  The error term can be used to assess risk.  Error in premiums can be directly compared to actuarial indications.
+
+<b>Conclusions.</b> Using a neural network: A PMML can be created, we can use many data scources.  
+
+How does it handle mutiple writing companies.  Once state versus another.  State nuances?
+
+<b>Availability.</b> The data source if the most important aspect.  The data needs to be from the direct source of the data.  A downstream source will lose information.  
+
+<b>Keywords.</b> Neural Networks; Extension of Exposures; Parallelogram Method; Onleveling;
