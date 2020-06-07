@@ -6,9 +6,9 @@ To get get started we need data that contains rating characteristics. These rati
 
 Let's define what is meant by uniformly distributed, independent mix, with exact features.
 
-  - <i>Uniformly Distributed</i>: each level has the same chance of being drawn as any other level.
-  - <i>Independent Mix</i>: rating variables are not correlated with one another whatsoever.
-  - <i>Exact Features</i>: features are drawn from the rate tables so the exact value can be found in the rate table.
+  * <i>Uniformly Distributed</i>: each level has the same chance of being drawn as any other level.
+  * <i>Independent Mix</i>: rating variables are not correlated with one another whatsoever.
+  * <i>Exact Features</i>: features are drawn from the rate tables so the exact value can be found in the rate table.
 
 This is the simplest dataset to create.  We randomly sample a row from each rate table and bind the result all together to create the exposure record. This code generates feature data we can use to rate with.  
 
@@ -85,9 +85,7 @@ This is great result. An insurance rating plan uses ratings factors typically ge
 
 To this point we have generated datasets that mirror what we'll call a quoting environment rather than a policy writing environment. A quoting environment is only generating full-term premiums based on the characteristics provided.  The policy writing system includes endorsements which can generate different premiums over time if the endorsement is "premium bearing".  The main reason for the differences is simple: time. Quoting is at one point in time with rating features fixed, but a policy can change during it's term.  In other words, the rating features can change over the life of the policy contract for various reasons--- for example, if the insured changes their policy deductible mid-term.
 
-In this section we develop a mock historical book of business.  To keep it simple, we are not going to use new business and retention assumptions.  In other words, we will start with one set of simulated policy data and age it to simulate five years worth of premium data with rate changes introduced.  Policies falling off the book and new business coming on will shift the mix but the \@ref[proof of concept](poc) does not require such detail at this time.  In addition, again for simplicity, we are going to build in a rate change for each each year--- so if we generate five years of data we will include four rate changes.
-
-It is important to note
+In this section we develop a mock historical book of business.  To keep it simple, we are not going to use new business and retention assumptions.  In other words, we will start with one set of simulated policy data and age it to simulate five years worth of premium data with rate changes introduced.  Policies falling off the book and new business coming on will shift the mix but the \@ref(poc)[proof of concept] does not require such detail at this time.  In addition, again for simplicity, we are going to build in a rate change for each year--- so since we are generating five years of data we will include four rate changes.
 
 ### Uniformly Distributed
 

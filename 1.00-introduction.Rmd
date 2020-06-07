@@ -5,17 +5,17 @@ Insurance rating algorithms are becoming more complex as companies replatform to
 (1) The company did not invest in re-rating technologies, capturing critical information, or detailed exposure data.  
 (2) The demands on the actuary to provide policy or exposure level data is increasing.
 (3) Rating systems are on outdated IT platforms, many from the innovations in the 1970.  These systems work well but are not well understood in many cases.
-(4) Business requirements were not robust enough or missed details whenb developing rating systems.
+(4) Business requirements were not robust enough or missed details when developing rating systems.
 
-There ia a need for a faster more accurate approach to approximate onlevel premiums.  Traditional approaches are time-comsuming and are often left with problems that never get resolved.  An approach that is agnostic to 
+There is a need for a faster more accurate approach to approximate onlevel premiums.  Traditional approaches are time-consuming and are often left with problems that never get resolved^[The traditional approach when designing an extension of exposures algorithm is to code every rating step.  A batch rater would require data preprocessing as well--- this is often difficult if the data is not mapped to rating elements directly.].
 
 (1) Bring policy premiums to current rate level for actuarial and other financial analysis.
 (2) Verifying policy rating systems are compliant with intended rates.
-(3) Data scienstists and research professionals need onleveled premiums for some models and the traditional techniques (such as pallelogram method) do not onelevel premium accurately enough at a lower grain.  Incorrect premiums can add skew and mis-align results. (Chuck, can you show this somehow?)
-(4) Product/portfolio managers want to view there book of business at a finer 
-(5) A rating system is often used to simulate.
+(3) Data scienstists and research professionals need onleveled premiums for some models and the traditional techniques (such as pallelogram method) do not onlevel premium accurately enough at a lower grain.  Incorrect premiums can add skew and mis-align results. (Chuck, can you show this somehow?)
+(4) Product/portfolio managers want to view their book of business in finer more segmented detail.  Accurate premiums can eliminate some bias or reduce the number of assumptions when facing a business decision.
+(5) A rating system is often used to simulate rate changes and view impacts to policyholders.  These impacts, sometimes called dislocation, is often shared with US State Departments in the form of a histogram when a company is making pricing changes.
 
-Over the years a company may have licensed many writing companies each with their "code" or rating algorithm across multiple systems with varying versions of code. This makes it difficult to rate policies in batch. If IT and actuaries do not have the ability to do this then assumptions to be made and particular details need to be addressed directly.
+Over the years a company may have licensed many writing companies each with their "code" or rating algorithm across multiple systems with varying versions of code. This makes it difficult even more difficult to rate policies in batch. If IT and actuaries do not have the ability to do this then assumptions need to be made and particular details need to be addressed directly.
 
 ## Extension of Exposures 
 
@@ -25,54 +25,19 @@ Extension of exposures (EoE) is the method in which every policy is rated accord
 (2) Rating steps / Rating formula / Rating Algorithm.
 (3) Policy attribute data / rating data.
 
-This method restates the historical premium to the amount that would be charged under the rates set forth by the rate book.  In theory, thois could be at any rate level as prescribed by the rate book version.  However, this is often not the case.  These system
-
-However, this implies a dataset does exist see \@ref(theory).
-
-Extension of exposures has the advantage of being the most accurate current rate level method, assuming the actuary has access to the detailed data required. 
+This method restates the historical premium to the amount that would be charged under the rates set forth by the rate book.  In theory, this could be at any rate level as prescribed by the rate book version. Extension of exposures has the advantage of being the most accurate current rate level method, however, the major disadvantage it has is the amount of time and effort it takes to maintain.
 
 In the past, extension of exposures was practically impossible due to the significant number of calculations required to rerate each policy. Given the
-tremendous increase in computing power, the only remaining hurdle is associated with gathering the required data. To adjust premium to the current rate level using the extension of exposures technique, the practitioner needs to know the applicable rating characteristics for every policy in the historical period.
-Often companies do not have that information readily available.
+tremendous increase in computing power, the only remaining hurdle is associated with gathering the required data. To adjust premium to the current rate level using the extension of exposures technique, the practitioner needs to know the applicable rating characteristics for every policy in the historical period. Often companies do not have that information readily available.
 
-Returning to the example, assume the actuary wishes to adjust the historical premium for Policy
-Year 2011 to the current rate level. Assume one such policy was effective on March 1, 2011 and had 10
-class Y exposures. The actual premium charged for the policy was based on the rates effective on
-January 1, 2011, and was $7,370 (= 10 x $1,045 x 0.60 + $1,100). To put the premium on-level,
-substitute the current base rate, class factor, and policy fee in the calculations; this results in an on-level
-premium of $8,405 (= 10 x $1,045 x 0.70 + $1,090). This same calculation is performed for every policy
-written in 2011 and then aggregated across all policies.
-If a group of policies has the exact same rating characteristics, they can be grouped for the purposes of the
-extension of exposures technique. This type of grouping is—practically speaking—only relevant in lines
-with relatively simple rating algorithms and very few rating variables.
-In some commercial lines products, underwriters can apply subjective debits and credits to manual
-premium. This complicates the use of the extension of exposures technique since it may be difficult to
-determine what debits and credits would be applied under today’s schedule rating guidelines. The actuary
-may consider measuring how credit and debit practices have changed by reviewing distributions of debits
-and credits over recent years. 
+The `leennr` approach is meant to address the disadvantages of the extension of exposures method: rating algorithm maintenance and data availability. Because rating algorithms are so unique there is no single approach that will work in all cases.  With luck this book's guidance will produce faster more granular on-leveled premiums.
 
 ## Why neural nets?
 
-Neural nets have been said to compute any function within certain approximation (http://neuralnetworksanddeeplearning.com/chap4.html).  There is a tradeoff between accuracy and computational time; the deeper complexity of the neural net leads to more accuracy but longer learning time.  These approximations are good enough for actuaries (see later section). 
+Neural nets have been said to compute any function within certain approximation (http://neuralnetworksanddeeplearning.com/chap4.html).  There is a tradeoff between accuracy and computational time; the deeper complexity of the neural net leads to more accuracy but longer learning time.  These approximations are good enough for most actuarial applications as we'll see later.
 
-Premiums are a function of $x$ features, a closed system with many but only finit possible outcomes. Outcomes are not evenly distributed which is often referred to as mix of business.
+Premiums are a function of $x$ features, a continuous value greater than 0 but certainly not large.  Premiums come from a closed system with many but only finite possible outcomes. Neural networks approximate functions with such properties.  Not all outcomes are not evenly distributed which is often referred to as mix of business.  This may pose challenges when learning small segments of data which is a limitation of any model. 
 
-Unstructured data can be used.
+The traditional approach consists of tracking down the exact value of every feature and matching the levels exactly to the rate tables.  When a change is made to the algorithm, a rating variable, or table structure, this must be manually programmed again by actuaries. It can be difficult to keep up with. The `leennr` approach uses neural networks to speed up this process by eliminating data to rate table mappings.  Rather than matching values to rate tables, the values can be treated like features in a model.  Each feature may have some bearing on the final result which is premium. In theory, the parameters learned will be close to the rating factors in the rate tables, but ultimately, if the algorithm approximates premium well enough for the purposes of the problem that is all that matters.
 
-The traditional approach versus the NN approach.  The traditional approach consists of tracking down the exact value of every feature and matching the levels exactly to the.  When a change is made to the algorithm, a rating variable, or table structure, this must be manually programmed again by actuaries.
-
-The NN approach is to approximate the function.  We want to get within a $1.  The downside, which we will explore later, is the .  The traditional approach must happen in the first place in order for premium data to be generated and collected. Neural nets rely on a sample of premium data.  By its definition if the premium data has errors the neural net would target the "incorrect premiums", and fit to a system that was not intended by the traditional approach.
-
-### Hypothesis and Theory {#theory}
-
-#### Theory on the data.  
-
-Logic: if policy premium is generated.
-
-Show diagram of data in / data out.  
-
-Data needs to be on one row for each exposure - that means we can test out the flat fee versus not flat fee.
-
-#### Theory on the rating algorithm
-
-Neural nets should
+We are going to use neural networks to approximate the "premium function".  Getting within a specified tolerance is our goal.  The downside to this approach, which we will explore later, is the complete reliance on data. A quoting engine has different data than a policy writing engine as an example. The premium data generated and collected needs to be understood by the practitionor above all else when using `leennr`. For example, by its definition if the premium data has errors the neural network would target the "incorrect premiums", and learn a system that contains those errors.

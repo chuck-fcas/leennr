@@ -4,6 +4,10 @@ There are two different parts to the `leennr` proof of concept.  First, can fitt
 
 In section \@ref(first_time_fit) we showed how to fit a neural network to premium data.  The next step is to expand on this idea and determine if the method does reasonably well modeling a rate structure to re-rate polices to a specific rate book (i.e. rate level).
 
+## Refining the Model results
+
+
+
 ## Simulate Rate Changes - this is needed to 
 
 The goal is to reasonably approximate rate changes for a book business.

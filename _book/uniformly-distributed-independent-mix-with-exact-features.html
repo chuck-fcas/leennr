@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.1 Uniformly Distributed, Independent Mix, with Exact Features | Learning Extension of Exposures with Neural Networks in R</title>
   <meta name="description" content="3.1 Uniformly Distributed, Independent Mix, with Exact Features | Learning Extension of Exposures with Neural Networks in R" />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.1 Uniformly Distributed, Independent Mix, with Exact Features | Learning Extension of Exposures with Neural Networks in R" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Charles Lindberg, FCAS" />
 
 
-<meta name="date" content="2019-06-07" />
+<meta name="date" content="2020-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="premium-data.html">
-<link rel="next" href="not-uniformly-distributed-independent-mix-of-business.html">
+<link rel="prev" href="premium-data.html"/>
+<link rel="next" href="not-uniformly-distributed-independent-mix-of-business.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -56,7 +59,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -135,9 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="extension-of-exposures.html"><a href="extension-of-exposures.html"><i class="fa fa-check"></i><b>1.1</b> Extension of Exposures</a></li>
-<li class="chapter" data-level="1.2" data-path="why-neural-nets.html"><a href="why-neural-nets.html"><i class="fa fa-check"></i><b>1.2</b> Why neural nets?</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="why-neural-nets.html"><a href="why-neural-nets.html#theory"><i class="fa fa-check"></i><b>1.2.1</b> Hypothesis and Theory</a></li>
-</ul></li>
+<li class="chapter" data-level="1.2" data-path="why-neural-nets.html"><a href="why-neural-nets.html"><i class="fa fa-check"></i><b>1.2</b> Why neural nets?</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="ratebooks.html"><a href="ratebooks.html"><i class="fa fa-check"></i><b>2</b> Rate Books and Rate Calculation Examples</a><ul>
 <li class="chapter" data-level="2.1" data-path="homeowners.html"><a href="homeowners.html"><i class="fa fa-check"></i><b>2.1</b> Homeowners</a><ul>
@@ -159,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="extreme-sample-bias.html"><a href="extreme-sample-bias.html"><i class="fa fa-check"></i><b>3.5</b> Extreme Sample Bias</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="first-time.html"><a href="first-time.html"><i class="fa fa-check"></i><b>4</b> Learning Extension of Exposures - Fitting a Dataset</a><ul>
+<li class="chapter" data-level="4" data-path="first-time-fit.html"><a href="first-time-fit.html"><i class="fa fa-check"></i><b>4</b> Learning Extension of Exposures - Fitting a Dataset</a><ul>
 <li class="chapter" data-level="4.1" data-path="data-preparation-and-required-packages.html"><a href="data-preparation-and-required-packages.html"><i class="fa fa-check"></i><b>4.1</b> Data Preparation and Required Packages</a></li>
 <li class="chapter" data-level="4.2" data-path="model-setup.html"><a href="model-setup.html"><i class="fa fa-check"></i><b>4.2</b> Model Setup</a></li>
 <li class="chapter" data-level="4.3" data-path="first-time-leennr.html"><a href="first-time-leennr.html"><i class="fa fa-check"></i><b>4.3</b> First Time leennR</a></li>
@@ -180,6 +180,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.2" data-path="more.html"><a href="more.html#revisiting-rating-examples-with-deeper-nets"><i class="fa fa-check"></i><b>6.5.2</b> Revisiting Rating Examples with Deeper Nets</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="copybooks-and-cobol.html"><a href="copybooks-and-cobol.html"><i class="fa fa-check"></i><b>6.6</b> Copybooks and COBOL</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="generalized-parallelogram-method.html"><a href="generalized-parallelogram-method.html"><i class="fa fa-check"></i><b>A</b> Generalized Parallelogram Method</a><ul>
+<li class="chapter" data-level="A.1" data-path="generalized-parallelogram-terms-and-formulas.html"><a href="generalized-parallelogram-terms-and-formulas.html"><i class="fa fa-check"></i><b>A.1</b> Generalized Parallelogram Terms and Formulas</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
@@ -212,25 +216,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 <p>This is the simplest dataset to create. We randomly sample a row from each rate table and bind the result all together to create the exposure record. This code generates feature data we can use to rate with.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Number of records we want to generate.</span>
-n_draw &lt;-<span class="st"> </span><span class="dv">10000</span>
-ho_rate_tables &lt;-<span class="st"> </span><span class="kw">read_rds</span>(<span class="st">&quot;ho_rate_tables.Rds&quot;</span>)
-
-<span class="co">#Set seed to get consistent results each draw.</span>
-<span class="kw">set.seed</span>(<span class="dv">5555</span>) 
-
-<span class="co"># For each table, draw n_draw random numbers.</span>
-ho_uniform_iid &lt;-
-<span class="st">  </span>ho_rate_tables <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">lapply</span>(
-    <span class="cf">function</span>(x) {
-      <span class="kw">nrow</span>(x) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">      </span><span class="kw">sample</span>(n_draw, <span class="dt">replace =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">      </span><span class="kw">lapply</span>(<span class="cf">function</span>(y) x[y, <span class="op">-</span><span class="kw">ncol</span>(x)]) <span class="op">%&gt;%</span><span class="st"> </span>bind_rows}) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>bind_cols <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">cbind</span>(<span class="dt">policy_number =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(.) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str_pad</span>(<span class="kw">nchar</span>(n_draw), <span class="dt">pad =</span> <span class="st">&quot;0&quot;</span>), .)
-
-ho_uniform_iid <span class="op">%&gt;%</span><span class="st"> </span>as_tibble</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># Number of records we want to generate.</span></a>
+<a class="sourceLine" id="cb7-2" title="2">n_draw &lt;-<span class="st"> </span><span class="dv">10000</span></a>
+<a class="sourceLine" id="cb7-3" title="3">ho_rate_tables &lt;-<span class="st"> </span><span class="kw">read_rds</span>(<span class="st">&quot;ho_rate_tables.Rds&quot;</span>)</a>
+<a class="sourceLine" id="cb7-4" title="4"></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="co">#Set seed to get consistent results each draw.</span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="kw">set.seed</span>(<span class="dv">5555</span>) </a>
+<a class="sourceLine" id="cb7-7" title="7"></a>
+<a class="sourceLine" id="cb7-8" title="8"><span class="co"># For each table, draw n_draw random numbers.</span></a>
+<a class="sourceLine" id="cb7-9" title="9">ho_uniform_iid &lt;-</a>
+<a class="sourceLine" id="cb7-10" title="10"><span class="st">  </span>ho_rate_tables <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-11" title="11"><span class="st">  </span><span class="kw">lapply</span>(</a>
+<a class="sourceLine" id="cb7-12" title="12">    <span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb7-13" title="13">      <span class="kw">nrow</span>(x) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-14" title="14"><span class="st">      </span><span class="kw">sample</span>(n_draw, <span class="dt">replace =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-15" title="15"><span class="st">      </span><span class="kw">lapply</span>(<span class="cf">function</span>(y) x[y, <span class="op">-</span><span class="kw">ncol</span>(x)]) <span class="op">%&gt;%</span><span class="st"> </span>bind_rows}) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-16" title="16"><span class="st">  </span>bind_cols <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-17" title="17"><span class="st">  </span><span class="kw">cbind</span>(<span class="dt">policy_number =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(.) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str_pad</span>(<span class="kw">nchar</span>(n_draw), <span class="dt">pad =</span> <span class="st">&quot;0&quot;</span>), .)</a>
+<a class="sourceLine" id="cb7-18" title="18"></a>
+<a class="sourceLine" id="cb7-19" title="19">ho_uniform_iid <span class="op">%&gt;%</span><span class="st"> </span>as_tibble</a></code></pre></div>
 <pre><code>## # A tibble: 10,000 x 12
 ##    policy_number peril   aoi territory protection_class
 ##    &lt;fct&gt;         &lt;chr&gt; &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt;
@@ -250,25 +254,25 @@ ho_uniform_iid <span class="op">%&gt;%</span><span class="st"> </span>as_tibble<
 ## #   jewelry_limit &lt;dbl&gt;, limit_liability_medpay &lt;chr&gt;,
 ## #   form &lt;chr&gt;</code></pre>
 <p>Next, retrieve the rating factors and apply them according to the rating algorithm steps to generate premium as follows. One thing to mention here. In reality a policy can have multiple credits but this code only randomly draws one from the credit table the way it is setup. This doesn’t take away from our experiment.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Need to use the formula we already laid out above somehow.  This is just to keep going.</span>
-ho_uniform_iid_rating &lt;-
-<span class="st">  </span>ho_rate_tables <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">lapply</span>(<span class="cf">function</span>(x) (x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(ho_uniform_iid))<span class="op">$</span>value) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>bind_rows <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(
-    <span class="dt">premium =</span>
-      tbl_base <span class="op">*</span>
-<span class="st">      </span>tbl_aoi <span class="op">*</span>
-<span class="st">      </span>tbl_territory <span class="op">*</span><span class="st"> </span>
-<span class="st">      </span>tbl_protection_class <span class="op">*</span>
-<span class="st">      </span>tbl_uw_tier <span class="op">*</span>
-<span class="st">      </span>tbl_deductible <span class="op">*</span>
-<span class="st">      </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>tbl_credits) <span class="op">+</span>
-<span class="st">      </span>tbl_jewelry <span class="op">+</span>
-<span class="st">      </span>tbl_increased_liability <span class="op">+</span>
-<span class="st">      </span>tbl_expense_fee,
-    <span class="dt">premium =</span> premium <span class="op">%&gt;%</span><span class="st"> </span>round
-  )</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># Need to use the formula we already laid out above somehow.  This is just to keep going.</span></a>
+<a class="sourceLine" id="cb9-2" title="2">ho_uniform_iid_rating &lt;-</a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="st">  </span>ho_rate_tables <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="st">    </span><span class="kw">lapply</span>(<span class="cf">function</span>(x) (x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(ho_uniform_iid))<span class="op">$</span>value) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="st">  </span>bind_rows <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb9-7" title="7">    <span class="dt">premium =</span></a>
+<a class="sourceLine" id="cb9-8" title="8">      tbl_base <span class="op">*</span></a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="st">      </span>tbl_aoi <span class="op">*</span></a>
+<a class="sourceLine" id="cb9-10" title="10"><span class="st">      </span>tbl_territory <span class="op">*</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="st">      </span>tbl_protection_class <span class="op">*</span></a>
+<a class="sourceLine" id="cb9-12" title="12"><span class="st">      </span>tbl_uw_tier <span class="op">*</span></a>
+<a class="sourceLine" id="cb9-13" title="13"><span class="st">      </span>tbl_deductible <span class="op">*</span></a>
+<a class="sourceLine" id="cb9-14" title="14"><span class="st">      </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>tbl_credits) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-15" title="15"><span class="st">      </span>tbl_jewelry <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-16" title="16"><span class="st">      </span>tbl_increased_liability <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-17" title="17"><span class="st">      </span>tbl_expense_fee,</a>
+<a class="sourceLine" id="cb9-18" title="18">    <span class="dt">premium =</span> premium <span class="op">%&gt;%</span><span class="st"> </span>round</a>
+<a class="sourceLine" id="cb9-19" title="19">  )</a></code></pre></div>
 <pre><code>## Joining, by = &quot;peril&quot;</code></pre>
 <pre><code>## Joining, by = &quot;aoi&quot;</code></pre>
 <pre><code>## Joining, by = &quot;territory&quot;</code></pre>
@@ -279,19 +283,19 @@ ho_uniform_iid_rating &lt;-
 <pre><code>## Joining, by = &quot;jewelry_limit&quot;</code></pre>
 <pre><code>## Joining, by = &quot;limit_liability_medpay&quot;</code></pre>
 <pre><code>## Joining, by = &quot;form&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Inpute premium data onto rating data</span>
-ho_uniform_iid &lt;-<span class="st"> </span>
-<span class="st">  </span>ho_uniform_iid <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">cbind</span>(<span class="dt">premium =</span> ho_uniform_iid_rating<span class="op">$</span>premium) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate_if</span>(is.character, factor)</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="co"># Inpute premium data onto rating data</span></a>
+<a class="sourceLine" id="cb20-2" title="2">ho_uniform_iid &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb20-3" title="3"><span class="st">  </span>ho_uniform_iid <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-4" title="4"><span class="st">  </span><span class="kw">cbind</span>(<span class="dt">premium =</span> ho_uniform_iid_rating<span class="op">$</span>premium) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-5" title="5"><span class="st">  </span><span class="kw">mutate_if</span>(is.character, factor)</a></code></pre></div>
 <p>Let’s take a look at the distribution of premiums.</p>
-<pre class="sourceCode r"><code class="sourceCode r">ho_uniform_iid <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>ggplot <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> premium), <span class="dt">binwidth =</span> <span class="dv">50</span>, <span class="dt">color =</span> <span class="st">&quot;darkorange3&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Premium Bin&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Number of Training Examples&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-3-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">ho_uniform_iid <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="st">  </span>ggplot <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> premium), <span class="dt">binwidth =</span> <span class="dv">50</span>, <span class="dt">color =</span> <span class="st">&quot;darkorange3&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-4" title="4"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Premium Bin&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-5" title="5"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Number of Training Examples&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-6" title="6"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-9-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>This is great result. An insurance rating plan uses ratings factors typically generated using loss cost models. Even though we randomly generated a feature set there is a clear transfomation that occurs just by using rating factors selected from generlized linear model.</p>
 </div>
             </section>
@@ -305,11 +309,13 @@ ho_uniform_iid &lt;-<span class="st"> </span>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
 <script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
 <script src="libs/gitbook/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -317,12 +323,11 @@ gitbook.start({
 "github": false,
 "facebook": false,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -334,6 +339,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -352,8 +361,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1.2 Why neural nets? | Learning Extension of Exposures with Neural Networks in R</title>
   <meta name="description" content="1.2 Why neural nets? | Learning Extension of Exposures with Neural Networks in R" />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1.2 Why neural nets? | Learning Extension of Exposures with Neural Networks in R" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Charles Lindberg, FCAS" />
 
 
-<meta name="date" content="2019-06-07" />
+<meta name="date" content="2020-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="extension-of-exposures.html">
-<link rel="next" href="ratebooks.html">
+<link rel="prev" href="extension-of-exposures.html"/>
+<link rel="next" href="ratebooks.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -56,7 +59,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -135,9 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="extension-of-exposures.html"><a href="extension-of-exposures.html"><i class="fa fa-check"></i><b>1.1</b> Extension of Exposures</a></li>
-<li class="chapter" data-level="1.2" data-path="why-neural-nets.html"><a href="why-neural-nets.html"><i class="fa fa-check"></i><b>1.2</b> Why neural nets?</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="why-neural-nets.html"><a href="why-neural-nets.html#theory"><i class="fa fa-check"></i><b>1.2.1</b> Hypothesis and Theory</a></li>
-</ul></li>
+<li class="chapter" data-level="1.2" data-path="why-neural-nets.html"><a href="why-neural-nets.html"><i class="fa fa-check"></i><b>1.2</b> Why neural nets?</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="ratebooks.html"><a href="ratebooks.html"><i class="fa fa-check"></i><b>2</b> Rate Books and Rate Calculation Examples</a><ul>
 <li class="chapter" data-level="2.1" data-path="homeowners.html"><a href="homeowners.html"><i class="fa fa-check"></i><b>2.1</b> Homeowners</a><ul>
@@ -159,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="extreme-sample-bias.html"><a href="extreme-sample-bias.html"><i class="fa fa-check"></i><b>3.5</b> Extreme Sample Bias</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="first-time.html"><a href="first-time.html"><i class="fa fa-check"></i><b>4</b> Learning Extension of Exposures - Fitting a Dataset</a><ul>
+<li class="chapter" data-level="4" data-path="first-time-fit.html"><a href="first-time-fit.html"><i class="fa fa-check"></i><b>4</b> Learning Extension of Exposures - Fitting a Dataset</a><ul>
 <li class="chapter" data-level="4.1" data-path="data-preparation-and-required-packages.html"><a href="data-preparation-and-required-packages.html"><i class="fa fa-check"></i><b>4.1</b> Data Preparation and Required Packages</a></li>
 <li class="chapter" data-level="4.2" data-path="model-setup.html"><a href="model-setup.html"><i class="fa fa-check"></i><b>4.2</b> Model Setup</a></li>
 <li class="chapter" data-level="4.3" data-path="first-time-leennr.html"><a href="first-time-leennr.html"><i class="fa fa-check"></i><b>4.3</b> First Time leennR</a></li>
@@ -180,6 +180,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.2" data-path="more.html"><a href="more.html#revisiting-rating-examples-with-deeper-nets"><i class="fa fa-check"></i><b>6.5.2</b> Revisiting Rating Examples with Deeper Nets</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="copybooks-and-cobol.html"><a href="copybooks-and-cobol.html"><i class="fa fa-check"></i><b>6.6</b> Copybooks and COBOL</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="generalized-parallelogram-method.html"><a href="generalized-parallelogram-method.html"><i class="fa fa-check"></i><b>A</b> Generalized Parallelogram Method</a><ul>
+<li class="chapter" data-level="A.1" data-path="generalized-parallelogram-terms-and-formulas.html"><a href="generalized-parallelogram-terms-and-formulas.html"><i class="fa fa-check"></i><b>A.1</b> Generalized Parallelogram Terms and Formulas</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
@@ -203,25 +207,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="why-neural-nets" class="section level2">
 <h2><span class="header-section-number">1.2</span> Why neural nets?</h2>
-<p>Neural nets have been said to compute any function within certain approximation (<a href="http://neuralnetworksanddeeplearning.com/chap4.html" class="uri">http://neuralnetworksanddeeplearning.com/chap4.html</a>). There is a tradeoff between accuracy and computational time; the deeper complexity of the neural net leads to more accuracy but longer learning time. These approximations are good enough for actuaries (see later section).</p>
-<p>Premiums are a function of <span class="math inline">\(x\)</span> features, a closed system with many but only finit possible outcomes. Outcomes are not evenly distributed which is often referred to as mix of business.</p>
-<p>Unstructured data can be used.</p>
-<p>The traditional approach versus the NN approach. The traditional approach consists of tracking down the exact value of every feature and matching the levels exactly to the. When a change is made to the algorithm, a rating variable, or table structure, this must be manually programmed again by actuaries.</p>
-<p>The NN approach is to approximate the function. We want to get within a $1. The downside, which we will explore later, is the . The traditional approach must happen in the first place in order for premium data to be generated and collected. Neural nets rely on a sample of premium data. By its definition if the premium data has errors the neural net would target the “incorrect premiums”, and fit to a system that was not intended by the traditional approach.</p>
-<div id="theory" class="section level3">
-<h3><span class="header-section-number">1.2.1</span> Hypothesis and Theory</h3>
-<div id="theory-on-the-data." class="section level4">
-<h4><span class="header-section-number">1.2.1.1</span> Theory on the data.</h4>
-<p>Logic: if policy premium is generated.</p>
-<p>Show diagram of data in / data out.</p>
-<p>Data needs to be on one row for each exposure - that means we can test out the flat fee versus not flat fee.</p>
-</div>
-<div id="theory-on-the-rating-algorithm" class="section level4">
-<h4><span class="header-section-number">1.2.1.2</span> Theory on the rating algorithm</h4>
-<p>Neural nets should</p>
+<p>Neural nets have been said to compute any function within certain approximation (<a href="http://neuralnetworksanddeeplearning.com/chap4.html" class="uri">http://neuralnetworksanddeeplearning.com/chap4.html</a>). There is a tradeoff between accuracy and computational time; the deeper complexity of the neural net leads to more accuracy but longer learning time. These approximations are good enough for most actuarial applications as we’ll see later.</p>
+<p>Premiums are a function of <span class="math inline">\(x\)</span> features, a continuous value greater than 0 but certainly not large. Premiums come from a closed system with many but only finite possible outcomes. Neural networks approximate functions with such properties. Not all outcomes are not evenly distributed which is often referred to as mix of business. This may pose challenges when learning small segments of data which is a limitation of any model.</p>
+<p>The traditional approach consists of tracking down the exact value of every feature and matching the levels exactly to the rate tables. When a change is made to the algorithm, a rating variable, or table structure, this must be manually programmed again by actuaries. It can be difficult to keep up with. The <code>leennr</code> approach uses neural networks to speed up this process by eliminating data to rate table mappings. Rather than matching values to rate tables, the values can be treated like features in a model. Each feature may have some bearing on the final result which is premium. In theory, the parameters learned will be close to the rating factors in the rate tables, but ultimately, if the algorithm approximates premium well enough for the purposes of the problem that is all that matters.</p>
+<p>We are going to use neural networks to approximate the “premium function”. Getting within a specified tolerance is our goal. The downside to this approach, which we will explore later, is the complete reliance on data. A quoting engine has different data than a policy writing engine as an example. The premium data generated and collected needs to be understood by the practitionor above all else when using <code>leennr</code>. For example, by its definition if the premium data has errors the neural network would target the “incorrect premiums”, and learn a system that contains those errors.</p>
 
-</div>
-</div>
 </div>
 <!-- </div> -->
             </section>
@@ -235,11 +225,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
 <script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
 <script src="libs/gitbook/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -247,12 +239,11 @@ gitbook.start({
 "github": false,
 "facebook": false,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -264,6 +255,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -282,8 +277,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

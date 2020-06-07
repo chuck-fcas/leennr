@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.2 Testing Missing Features | Learning Extension of Exposures with Neural Networks in R</title>
   <meta name="description" content="6.2 Testing Missing Features | Learning Extension of Exposures with Neural Networks in R" />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.2 Testing Missing Features | Learning Extension of Exposures with Neural Networks in R" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Charles Lindberg, FCAS" />
 
 
-<meta name="date" content="2019-06-07" />
+<meta name="date" content="2020-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="number-of-price-points-and-needed-layers.html">
-<link rel="next" href="is-it-right.html">
+<link rel="prev" href="number-of-price-points-and-needed-layers.html"/>
+<link rel="next" href="is-it-right.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -56,7 +59,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -135,9 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="extension-of-exposures.html"><a href="extension-of-exposures.html"><i class="fa fa-check"></i><b>1.1</b> Extension of Exposures</a></li>
-<li class="chapter" data-level="1.2" data-path="why-neural-nets.html"><a href="why-neural-nets.html"><i class="fa fa-check"></i><b>1.2</b> Why neural nets?</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="why-neural-nets.html"><a href="why-neural-nets.html#theory"><i class="fa fa-check"></i><b>1.2.1</b> Hypothesis and Theory</a></li>
-</ul></li>
+<li class="chapter" data-level="1.2" data-path="why-neural-nets.html"><a href="why-neural-nets.html"><i class="fa fa-check"></i><b>1.2</b> Why neural nets?</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="ratebooks.html"><a href="ratebooks.html"><i class="fa fa-check"></i><b>2</b> Rate Books and Rate Calculation Examples</a><ul>
 <li class="chapter" data-level="2.1" data-path="homeowners.html"><a href="homeowners.html"><i class="fa fa-check"></i><b>2.1</b> Homeowners</a><ul>
@@ -159,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="extreme-sample-bias.html"><a href="extreme-sample-bias.html"><i class="fa fa-check"></i><b>3.5</b> Extreme Sample Bias</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="first-time.html"><a href="first-time.html"><i class="fa fa-check"></i><b>4</b> Learning Extension of Exposures - Fitting a Dataset</a><ul>
+<li class="chapter" data-level="4" data-path="first-time-fit.html"><a href="first-time-fit.html"><i class="fa fa-check"></i><b>4</b> Learning Extension of Exposures - Fitting a Dataset</a><ul>
 <li class="chapter" data-level="4.1" data-path="data-preparation-and-required-packages.html"><a href="data-preparation-and-required-packages.html"><i class="fa fa-check"></i><b>4.1</b> Data Preparation and Required Packages</a></li>
 <li class="chapter" data-level="4.2" data-path="model-setup.html"><a href="model-setup.html"><i class="fa fa-check"></i><b>4.2</b> Model Setup</a></li>
 <li class="chapter" data-level="4.3" data-path="first-time-leennr.html"><a href="first-time-leennr.html"><i class="fa fa-check"></i><b>4.3</b> First Time leennR</a></li>
@@ -180,6 +180,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.2" data-path="more.html"><a href="more.html#revisiting-rating-examples-with-deeper-nets"><i class="fa fa-check"></i><b>6.5.2</b> Revisiting Rating Examples with Deeper Nets</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="copybooks-and-cobol.html"><a href="copybooks-and-cobol.html"><i class="fa fa-check"></i><b>6.6</b> Copybooks and COBOL</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="generalized-parallelogram-method.html"><a href="generalized-parallelogram-method.html"><i class="fa fa-check"></i><b>A</b> Generalized Parallelogram Method</a><ul>
+<li class="chapter" data-level="A.1" data-path="generalized-parallelogram-terms-and-formulas.html"><a href="generalized-parallelogram-terms-and-formulas.html"><i class="fa fa-check"></i><b>A.1</b> Generalized Parallelogram Terms and Formulas</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
@@ -215,11 +219,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
 <script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
 <script src="libs/gitbook/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -227,12 +233,11 @@ gitbook.start({
 "github": false,
 "facebook": false,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -244,6 +249,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -262,8 +271,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

@@ -4,7 +4,7 @@ author: "Charles Lindberg, FCAS"
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
 documentclass: "krantz"
-bibliography: ["packages.bib"]
+bibliography: ["packages.bib", "book.bib"]
 biblio-style: "apalike"
 link-citations: yes
 colorlinks: yes
@@ -29,6 +29,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
 library(lubridate)
+library(kableExtra)
 
 # Automatically create a bib database for R packages
 knitr::write_bib(c(

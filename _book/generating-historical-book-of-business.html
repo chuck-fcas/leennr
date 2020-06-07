@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.4 Generating Historical Book of Business | Learning Extension of Exposures with Neural Networks in R</title>
   <meta name="description" content="3.4 Generating Historical Book of Business | Learning Extension of Exposures with Neural Networks in R" />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.4 Generating Historical Book of Business | Learning Extension of Exposures with Neural Networks in R" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Charles Lindberg, FCAS" />
 
 
-<meta name="date" content="2019-06-07" />
+<meta name="date" content="2020-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="not-uniformly-distributed-dependent-mix-of-business.html">
-<link rel="next" href="extreme-sample-bias.html">
+<link rel="prev" href="not-uniformly-distributed-dependent-mix-of-business.html"/>
+<link rel="next" href="extreme-sample-bias.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -56,7 +59,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -135,9 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="extension-of-exposures.html"><a href="extension-of-exposures.html"><i class="fa fa-check"></i><b>1.1</b> Extension of Exposures</a></li>
-<li class="chapter" data-level="1.2" data-path="why-neural-nets.html"><a href="why-neural-nets.html"><i class="fa fa-check"></i><b>1.2</b> Why neural nets?</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="why-neural-nets.html"><a href="why-neural-nets.html#theory"><i class="fa fa-check"></i><b>1.2.1</b> Hypothesis and Theory</a></li>
-</ul></li>
+<li class="chapter" data-level="1.2" data-path="why-neural-nets.html"><a href="why-neural-nets.html"><i class="fa fa-check"></i><b>1.2</b> Why neural nets?</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="ratebooks.html"><a href="ratebooks.html"><i class="fa fa-check"></i><b>2</b> Rate Books and Rate Calculation Examples</a><ul>
 <li class="chapter" data-level="2.1" data-path="homeowners.html"><a href="homeowners.html"><i class="fa fa-check"></i><b>2.1</b> Homeowners</a><ul>
@@ -159,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="extreme-sample-bias.html"><a href="extreme-sample-bias.html"><i class="fa fa-check"></i><b>3.5</b> Extreme Sample Bias</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="first-time.html"><a href="first-time.html"><i class="fa fa-check"></i><b>4</b> Learning Extension of Exposures - Fitting a Dataset</a><ul>
+<li class="chapter" data-level="4" data-path="first-time-fit.html"><a href="first-time-fit.html"><i class="fa fa-check"></i><b>4</b> Learning Extension of Exposures - Fitting a Dataset</a><ul>
 <li class="chapter" data-level="4.1" data-path="data-preparation-and-required-packages.html"><a href="data-preparation-and-required-packages.html"><i class="fa fa-check"></i><b>4.1</b> Data Preparation and Required Packages</a></li>
 <li class="chapter" data-level="4.2" data-path="model-setup.html"><a href="model-setup.html"><i class="fa fa-check"></i><b>4.2</b> Model Setup</a></li>
 <li class="chapter" data-level="4.3" data-path="first-time-leennr.html"><a href="first-time-leennr.html"><i class="fa fa-check"></i><b>4.3</b> First Time leennR</a></li>
@@ -180,6 +180,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.2" data-path="more.html"><a href="more.html#revisiting-rating-examples-with-deeper-nets"><i class="fa fa-check"></i><b>6.5.2</b> Revisiting Rating Examples with Deeper Nets</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="copybooks-and-cobol.html"><a href="copybooks-and-cobol.html"><i class="fa fa-check"></i><b>6.6</b> Copybooks and COBOL</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="generalized-parallelogram-method.html"><a href="generalized-parallelogram-method.html"><i class="fa fa-check"></i><b>A</b> Generalized Parallelogram Method</a><ul>
+<li class="chapter" data-level="A.1" data-path="generalized-parallelogram-terms-and-formulas.html"><a href="generalized-parallelogram-terms-and-formulas.html"><i class="fa fa-check"></i><b>A.1</b> Generalized Parallelogram Terms and Formulas</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
@@ -204,28 +208,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="generating-historical-book-of-business" class="section level2">
 <h2><span class="header-section-number">3.4</span> Generating Historical Book of Business</h2>
 <p>To this point we have generated datasets that mirror what we’ll call a quoting environment rather than a policy writing environment. A quoting environment is only generating full-term premiums based on the characteristics provided. The policy writing system includes endorsements which can generate different premiums over time if the endorsement is “premium bearing”. The main reason for the differences is simple: time. Quoting is at one point in time with rating features fixed, but a policy can change during it’s term. In other words, the rating features can change over the life of the policy contract for various reasons— for example, if the insured changes their policy deductible mid-term.</p>
-<p>In this section we develop a mock historical book of business. To keep it simple, we are not going to use new business and retention assumptions. In other words, we will start with one set of simulated policy data and age it to simulate five years worth of premium data with rate changes introduced. Policies falling off the book and new business coming on will shift the mix but the @ref<a href="poc">proof of concept</a> does not require such detail at this time. In addition, again for simplicity, we are going to build in a rate change for each each year— so if we generate five years of data we will include four rate changes.</p>
-<p>It is important to note</p>
+<p>In this section we develop a mock historical book of business. To keep it simple, we are not going to use new business and retention assumptions. In other words, we will start with one set of simulated policy data and age it to simulate five years worth of premium data with rate changes introduced. Policies falling off the book and new business coming on will shift the mix but the <a href="poc.html#poc">5</a>[proof of concept] does not require such detail at this time. In addition, again for simplicity, we are going to build in a rate change for each year— so since we are generating five years of data we will include four rate changes.</p>
 <div id="uniformly-distributed" class="section level3">
 <h3><span class="header-section-number">3.4.1</span> Uniformly Distributed</h3>
-<pre class="sourceCode r"><code class="sourceCode r">ho_uniform_iid<span class="op">$</span>policy_year &lt;-<span class="st"> </span>
-<span class="st">  </span><span class="kw">Sys.Date</span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>lubridate<span class="op">::</span><span class="kw">year</span>() <span class="op">-</span><span class="st"> </span><span class="dv">5</span>
-
-bob_ho_uniform_iid &lt;-
-<span class="st">  </span>ho_uniform_iid <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(
-    <span class="dt">policy_year =</span> policy_year <span class="op">+</span><span class="st"> </span><span class="dv">1</span>,
-    <span class="dt">aoi         =</span> (<span class="fl">1.05</span> <span class="op">*</span><span class="st"> </span>aoi) <span class="op">%&gt;%</span><span class="st"> </span>round
-    )
-  <span class="co"># lubridate::ceiling_date(unit = &quot;years&quot;) - 1</span>
-  <span class="co"># lubridate::floor_date(unit = &quot;years&quot;)</span>
-  <span class="co"># lubridate::year()</span>
-
-<span class="co"># An example of sampling dates</span>
-<span class="co"># sample(seq(as.Date(&#39;1999/01/01&#39;), as.Date(&#39;2000/01/01&#39;), by=&quot;day&quot;), nrow(ho_uniform_iid), replace = TRUE)</span>
-
-ho_uniform_iid <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">write_rds</span>(<span class="st">&quot;ho_uniform_iid.Rds&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">ho_uniform_iid<span class="op">$</span>policy_year &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb22-2" title="2"><span class="st">  </span><span class="kw">Sys.Date</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb22-3" title="3"><span class="st">  </span>lubridate<span class="op">::</span><span class="kw">year</span>() <span class="op">-</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb22-4" title="4"></a>
+<a class="sourceLine" id="cb22-5" title="5">bob_ho_uniform_iid &lt;-</a>
+<a class="sourceLine" id="cb22-6" title="6"><span class="st">  </span>ho_uniform_iid <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb22-7" title="7"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb22-8" title="8">    <span class="dt">policy_year =</span> policy_year <span class="op">+</span><span class="st"> </span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb22-9" title="9">    <span class="dt">aoi         =</span> (<span class="fl">1.05</span> <span class="op">*</span><span class="st"> </span>aoi) <span class="op">%&gt;%</span><span class="st"> </span>round</a>
+<a class="sourceLine" id="cb22-10" title="10">    )</a>
+<a class="sourceLine" id="cb22-11" title="11">  <span class="co"># lubridate::ceiling_date(unit = &quot;years&quot;) - 1</span></a>
+<a class="sourceLine" id="cb22-12" title="12">  <span class="co"># lubridate::floor_date(unit = &quot;years&quot;)</span></a>
+<a class="sourceLine" id="cb22-13" title="13">  <span class="co"># lubridate::year()</span></a>
+<a class="sourceLine" id="cb22-14" title="14"></a>
+<a class="sourceLine" id="cb22-15" title="15"><span class="co"># An example of sampling dates</span></a>
+<a class="sourceLine" id="cb22-16" title="16"><span class="co"># sample(seq(as.Date(&#39;1999/01/01&#39;), as.Date(&#39;2000/01/01&#39;), by=&quot;day&quot;), nrow(ho_uniform_iid), replace = TRUE)</span></a>
+<a class="sourceLine" id="cb22-17" title="17"></a>
+<a class="sourceLine" id="cb22-18" title="18">ho_uniform_iid <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">write_rds</span>(<span class="st">&quot;ho_uniform_iid.Rds&quot;</span>)</a></code></pre></div>
 </div>
 <div id="rate-book-changes" class="section level3">
 <h3><span class="header-section-number">3.4.2</span> Rate Book Changes</h3>
@@ -242,11 +245,13 @@ ho_uniform_iid <span class="op">%&gt;%</span><span class="st"> </span><span clas
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
 <script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
 <script src="libs/gitbook/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -254,12 +259,11 @@ gitbook.start({
 "github": false,
 "facebook": false,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -271,6 +275,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -289,8 +297,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

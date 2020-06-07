@@ -1,0 +1,41 @@
+
+# Generalized Parallelogram Method
+
+Most methods of ratemaking require the Actuary to adjust premiums to reflect all rate changes that have been implemented. Actuaries use the parallelogram method of finding the portion of the exposures earned from a given rate change. Typically, the assumption is made that exposures are being written at a constant level which make the calculation simpler. 
+
+In this section, we provide a simple general formula for finding the earned portion of a rate increase for any given policy term, rate effective date, and evaluation period (period during which the premiums are earned).  An R function to compute rate change factors is also presented.
+
+The ideas presented here are based on a paper from the 1989 CAS proceedings [@generalized_parallelogram].
+
+## Generalized Parallelogram Terms and Formulas
+
+Each term is defined in the table below.  Set the beginning of the evaluation period at 0 with each term relative to the beginning of the evaluation period. In addition, make sure to use a common unit a measurement when defining these terms such as a year.
+
+The subscript $i$ denotes the index of the rate revision in order from 1 to the number of rate changes $n$ in the evaluation period.
+
+```{r}
+tribble(
+  ~Term,   ~Definition,
+  "$F$",   "Rate adjustment factor (onlevel factor).",
+  "$T$",   "Policy term; e.g. 1 year.",
+  "$E$",   "Length of evaluation period.",
+  "$D_i$", "Effective date of a rate revision.",
+  "$P_i$", "Portion of earned exposure subject to new rate.",
+  "r_i",   "Rate change $i$.",
+  "A_i",   "Time when rate change $i$ is fully earned."
+) %>% kable %>% 
+  kable_styling(bootstrap_options = "striped", full_width = FALSE)
+```
+
+The rate adjustment factor for the experience period is defined as follows:
+
+\begin{equation} 
+  F = \frac{(1+r_1),}
+  (\#eq:F)
+\end{equation}
+
+$P$ can be calculated by the following formula: 
+
+
+where F is the rate adjustment factor, r is the rate change and P is the
+portion of the earnqd exposure that was subject to the new rate. 

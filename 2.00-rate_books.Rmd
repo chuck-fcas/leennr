@@ -1,6 +1,15 @@
 # Rate Books and Rate Calculation Examples {#ratebooks}
 
-In this section we provide rating examples we can reference.
+In this section we provide rate books and their respective rating examples that will be used throughout this book.  Different lines of business were chosen to show differences each with a level of difficulty associated with it.
+
+```{r echo = FALSE}
+tribble(
+~"Line of Business", ~Difficulty, ~Nuance,
+"Homeowners", "Easy", "Additive components; e.g. Expense Fee"
+) %>% 
+kable(caption = "Rate Calculation Example Summary") %>% 
+kableExtra::kable_styling(full_width = FALSE)
+```
 
 ## Homeowners
 
@@ -12,7 +21,7 @@ This rate book is based on all-perils combined and all coverages combined for si
 
 The rating algorithm is defined as follows.
 
-```{r rating_algorithm, echo = FALSE, warning = FALSE}
+```{r echo = FALSE, warning = FALSE}
 tbl_algorithm <-
   tribble(
     ~variable, ~operation, ~rate_table,
@@ -161,15 +170,33 @@ ho_rate_tables <-
         ~form, ~value,
         "HO3", 50)
   )
-
 # ho_rate_tables %>% write_rds("ho_rate_tables.Rds")
 ```
 
-`r ho_rate_tables %>% map(function(x) knitr::kable(x) %>% kableExtra::kable_styling(c("striped", "condensed"), full_width = FALSE, position = "left"))`
+```{r}
+# For display purposes we're going to order based on table length and split into groups of 3.
+ho_rate_tables %>% 
+  list(.$tbl_base, .$tbl_territory, .$tbl_deductible) %>% 
+  kable %>% kableExtra::kable_styling(c("striped", "condensed"), full_width = FALSE)
+```
+```{r}
+ho_rate_tables %>% 
+  list(.$tbl_aoi, .$tbl_construction_type, .$tbl_uw_tier) %>% 
+  kable %>% kableExtra::kable_styling(c("striped", "condensed"), full_width = FALSE)
+```
+```{r}
+ho_rate_tables %>% 
+  list(.$tbl_credits, .$tbl_jewelry, .$tbl_increased_liability) %>% 
+  kable %>% kableExtra::kable_styling(c("striped", "condensed"), full_width = FALSE)
+```
+```{r}
+ho_rate_tables$tbl_expense_fee %>% 
+  kable %>% kableExtra::kable_styling(c("striped", "condensed"), full_width = FALSE)
+```
 
 ## Rating Calculation Examples
 
-In this section we provide a rating example for each rate book presented as a full-term quoted premium.  
+In this section we provide a rating example for each rate book presented as a full-term quoted premium.  Th
 
 ### Homeowners
 
@@ -202,7 +229,7 @@ tribble(
   ~rate_book, ~complexity, 
   "Homeowners", ho_rate_tables %>% sapply(nrow) %>% prod
   ) %>% 
-kableExtra::kable(format = "html") %>% 
+kableExtra::kable(caption = "Rate Book Complexity Score") %>% 
 kableExtra::kable_styling(c("striped", "condensed"), full_width = FALSE)
 ```
 

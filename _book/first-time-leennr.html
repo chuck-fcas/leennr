@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.3 First Time leennR | Learning Extension of Exposures with Neural Networks in R</title>
   <meta name="description" content="4.3 First Time leennR | Learning Extension of Exposures with Neural Networks in R" />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.3 First Time leennR | Learning Extension of Exposures with Neural Networks in R" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Charles Lindberg, FCAS" />
 
 
-<meta name="date" content="2019-06-07" />
+<meta name="date" content="2020-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="model-setup.html">
-<link rel="next" href="poc.html">
+<link rel="prev" href="model-setup.html"/>
+<link rel="next" href="poc.html"/>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -56,7 +59,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -135,9 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="extension-of-exposures.html"><a href="extension-of-exposures.html"><i class="fa fa-check"></i><b>1.1</b> Extension of Exposures</a></li>
-<li class="chapter" data-level="1.2" data-path="why-neural-nets.html"><a href="why-neural-nets.html"><i class="fa fa-check"></i><b>1.2</b> Why neural nets?</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="why-neural-nets.html"><a href="why-neural-nets.html#theory"><i class="fa fa-check"></i><b>1.2.1</b> Hypothesis and Theory</a></li>
-</ul></li>
+<li class="chapter" data-level="1.2" data-path="why-neural-nets.html"><a href="why-neural-nets.html"><i class="fa fa-check"></i><b>1.2</b> Why neural nets?</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="ratebooks.html"><a href="ratebooks.html"><i class="fa fa-check"></i><b>2</b> Rate Books and Rate Calculation Examples</a><ul>
 <li class="chapter" data-level="2.1" data-path="homeowners.html"><a href="homeowners.html"><i class="fa fa-check"></i><b>2.1</b> Homeowners</a><ul>
@@ -159,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="extreme-sample-bias.html"><a href="extreme-sample-bias.html"><i class="fa fa-check"></i><b>3.5</b> Extreme Sample Bias</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="first-time.html"><a href="first-time.html"><i class="fa fa-check"></i><b>4</b> Learning Extension of Exposures - Fitting a Dataset</a><ul>
+<li class="chapter" data-level="4" data-path="first-time-fit.html"><a href="first-time-fit.html"><i class="fa fa-check"></i><b>4</b> Learning Extension of Exposures - Fitting a Dataset</a><ul>
 <li class="chapter" data-level="4.1" data-path="data-preparation-and-required-packages.html"><a href="data-preparation-and-required-packages.html"><i class="fa fa-check"></i><b>4.1</b> Data Preparation and Required Packages</a></li>
 <li class="chapter" data-level="4.2" data-path="model-setup.html"><a href="model-setup.html"><i class="fa fa-check"></i><b>4.2</b> Model Setup</a></li>
 <li class="chapter" data-level="4.3" data-path="first-time-leennr.html"><a href="first-time-leennr.html"><i class="fa fa-check"></i><b>4.3</b> First Time leennR</a></li>
@@ -180,6 +180,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.2" data-path="more.html"><a href="more.html#revisiting-rating-examples-with-deeper-nets"><i class="fa fa-check"></i><b>6.5.2</b> Revisiting Rating Examples with Deeper Nets</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="copybooks-and-cobol.html"><a href="copybooks-and-cobol.html"><i class="fa fa-check"></i><b>6.6</b> Copybooks and COBOL</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="generalized-parallelogram-method.html"><a href="generalized-parallelogram-method.html"><i class="fa fa-check"></i><b>A</b> Generalized Parallelogram Method</a><ul>
+<li class="chapter" data-level="A.1" data-path="generalized-parallelogram-terms-and-formulas.html"><a href="generalized-parallelogram-terms-and-formulas.html"><i class="fa fa-check"></i><b>A.1</b> Generalized Parallelogram Terms and Formulas</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
@@ -203,19 +207,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="first-time-leennr" class="section level2">
 <h2><span class="header-section-number">4.3</span> First Time leennR</h2>
-<p>Fitting the model is quite simple. This model will is trained for 300 epochs.</p>
-<pre class="sourceCode r"><code class="sourceCode r">history &lt;-<span class="st"> </span>
-<span class="st">  </span>model <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">fit</span>(
-  x_train,
-  y_train, 
-  <span class="dt">epochs =</span> <span class="dv">300</span>, 
-  <span class="dt">batch_size =</span> <span class="dv">128</span>, 
-  <span class="dt">validation_split =</span> <span class="fl">0.2</span>,
-  )</code></pre>
+<p>Fitting the model is quite simple. This model will is trained for 1000 epochs.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">history &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb24-2" title="2"><span class="st">  </span>model <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb24-3" title="3"><span class="st">  </span><span class="kw">fit</span>(</a>
+<a class="sourceLine" id="cb24-4" title="4">  x_train,</a>
+<a class="sourceLine" id="cb24-5" title="5">  y_train, </a>
+<a class="sourceLine" id="cb24-6" title="6">  <span class="dt">epochs =</span> <span class="dv">1000</span>, </a>
+<a class="sourceLine" id="cb24-7" title="7">  <span class="dt">batch_size =</span> <span class="dv">1000</span>, </a>
+<a class="sourceLine" id="cb24-8" title="8">  <span class="dt">validation_split =</span> <span class="fl">0.2</span>,</a>
+<a class="sourceLine" id="cb24-9" title="9">  )</a></code></pre></div>
 <p>The model summary, the fitting history, and the mean squared error are as follows.</p>
-<pre class="sourceCode r"><code class="sourceCode r">model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>()</code></pre>
-<pre><code>## _______________________________________________________
+<pre><code>## Model: &quot;sequential&quot;
+## _______________________________________________________
 ## Layer (type)            Output Shape          Param #  
 ## =======================================================
 ## dense (Dense)           (None, 64)            768      
@@ -228,60 +232,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Trainable params: 2,881
 ## Non-trainable params: 0
 ## _______________________________________________________</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(history)</code></pre>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-9-1.svg" width="672" style="display: block; margin: auto;" /></p>
-<pre class="sourceCode r"><code class="sourceCode r">mse &lt;-<span class="st"> </span>history<span class="op">$</span>metrics<span class="op">$</span>loss <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tail</span>(., <span class="dv">1</span>) <span class="op">/</span><span class="st"> </span><span class="kw">nrow</span>(x_train) 
-<span class="kw">paste0</span>(<span class="st">&quot;Mean absolute error on test set: $&quot;</span>, <span class="kw">sprintf</span>(<span class="st">&quot;%.2f&quot;</span>, mse))</code></pre>
-<pre><code>## [1] &quot;Mean absolute error on test set: $0.02&quot;</code></pre>
-<p>We can plot how far off the predictions are with histograms. The results show we have some additional research to perform if we want to refine the accuracy further.</p>
-<pre class="sourceCode r"><code class="sourceCode r">predict &lt;-
-<span class="st">  </span>x_train <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">cbind.data.frame</span>(
-    y_train, 
-    <span class="dt">y_hat =</span> 
-      model <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">      </span><span class="kw">predict</span>(x_train)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>as_tibble
-
-predict_test &lt;-
-<span class="st">  </span>x_test <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">cbind.data.frame</span>(
-    y_train, 
-    <span class="dt">y_hat =</span> 
-      model <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">      </span><span class="kw">predict</span>(x_test)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>as_tibble
-
-<span class="co"># predict %&gt;%  </span>
-<span class="co">#   ggplot + </span>
-<span class="co">#   geom_jitter(aes(x = premium, y = abs(y_hat - premium)/premium)) +</span>
-<span class="co">#   xlab(&quot;Premium&quot;) +</span>
-<span class="co">#   ylab(&quot;Absolute Error as % of Premium&quot;)</span>
-
-predict <span class="op">%&gt;%</span><span class="st">  </span>
-<span class="st">  </span>ggplot <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_hex</span>(<span class="kw">aes</span>(<span class="dt">x =</span> premium, <span class="dt">y =</span> premium <span class="op">-</span><span class="st"> </span>y_hat)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Premium&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Premium - Fitted Value&quot;</span>) </code></pre>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-10-1.svg" width="672" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># predict_test %&gt;%  </span>
-<span class="co">#   ggplot + </span>
-<span class="co">#   geom_jitter(aes(x = premium, y = abs(y_hat - premium)/premium)) +</span>
-<span class="co">#   xlab(&quot;Premium&quot;) +</span>
-<span class="co">#   ylab(&quot;Absolute Error as % of Premium&quot;)</span>
-
-predict_test <span class="op">%&gt;%</span><span class="st">  </span>
-<span class="st">  </span>ggplot <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_hex</span>(<span class="kw">aes</span>(<span class="dt">x =</span> premium, <span class="dt">y =</span> premium <span class="op">-</span><span class="st"> </span>y_hat)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Premium&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Premium - Fitted Value&quot;</span>) </code></pre>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-10-2.svg" width="672" /></p>
-<pre class="sourceCode r"><code class="sourceCode r">ho_uniform_iid <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>ggplot <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> premium))</code></pre>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value
-## with `binwidth`.</code></pre>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-11-1.svg" width="672" /></p>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-15-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>## [1] &quot;Mean absolute error on test set: $26.73&quot;</code></pre>
+<p>We can plot how far off the predictions are with histograms. The results show we have some additional research to perform if we want to refine the accuracy further. We’ll explore this further in the next section.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="co"># predict %&gt;%  </span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="co">#   ggplot + </span></a>
+<a class="sourceLine" id="cb27-3" title="3"><span class="co">#   geom_jitter(aes(x = premium, y = abs(y_hat - premium)/premium)) +</span></a>
+<a class="sourceLine" id="cb27-4" title="4"><span class="co">#   xlab(&quot;Premium&quot;) +</span></a>
+<a class="sourceLine" id="cb27-5" title="5"><span class="co">#   ylab(&quot;Absolute Error as % of Premium&quot;)</span></a>
+<a class="sourceLine" id="cb27-6" title="6"></a>
+<a class="sourceLine" id="cb27-7" title="7">predict <span class="op">%&gt;%</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb27-8" title="8"><span class="st">  </span>ggplot <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-9" title="9"><span class="st">  </span><span class="kw">geom_hex</span>(<span class="kw">aes</span>(<span class="dt">x =</span> premium, <span class="dt">y =</span> premium <span class="op">-</span><span class="st"> </span>y_hat)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb27-10" title="10"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Premium&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb27-11" title="11"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Premium - Fitted Value&quot;</span>)</a></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-16-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="co"># predict_test %&gt;%  </span></a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="co">#   ggplot + </span></a>
+<a class="sourceLine" id="cb28-3" title="3"><span class="co">#   geom_jitter(aes(x = premium, y = abs(y_hat - premium)/premium)) +</span></a>
+<a class="sourceLine" id="cb28-4" title="4"><span class="co">#   xlab(&quot;Premium&quot;) +</span></a>
+<a class="sourceLine" id="cb28-5" title="5"><span class="co">#   ylab(&quot;Absolute Error as % of Premium&quot;)</span></a>
+<a class="sourceLine" id="cb28-6" title="6"></a>
+<a class="sourceLine" id="cb28-7" title="7">predict_test <span class="op">%&gt;%</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb28-8" title="8"><span class="st">  </span>ggplot <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb28-9" title="9"><span class="st">  </span><span class="kw">geom_hex</span>(<span class="kw">aes</span>(<span class="dt">x =</span> premium, <span class="dt">y =</span> premium <span class="op">-</span><span class="st"> </span>y_hat)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-10" title="10"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Premium&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-11" title="11"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Premium - Fitted Value&quot;</span>) </a></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-16-2.svg" width="672" /></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">predict <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="st">  </span>ggplot <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb29-3" title="3"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> premium, <span class="dt">color =</span> <span class="st">&quot;premium&quot;</span>), <span class="dt">binwidth =</span> <span class="dv">50</span>, <span class="dt">color =</span> <span class="st">&quot;darkorange3&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-4" title="4"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> y_hat), <span class="dt">binwidth =</span> <span class="dv">50</span>, <span class="dt">color =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-5" title="5"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Premium Bin&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-6" title="6"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Number of Training Examples&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-7" title="7"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-17-1.svg" width="672" /></p>
 
 </div>
 <!-- </div> -->
@@ -296,11 +281,13 @@ predict_test <span class="op">%&gt;%</span><span class="st">  </span>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
 <script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
 <script src="libs/gitbook/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -308,12 +295,11 @@ gitbook.start({
 "github": false,
 "facebook": false,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -325,6 +311,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -343,8 +333,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

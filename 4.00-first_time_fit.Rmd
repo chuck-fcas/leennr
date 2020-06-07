@@ -1,13 +1,15 @@
-# Learning Extension of Exposures - Fitting a Dataset {#first_time}
+# Learning Extension of Exposures - Fitting a Dataset {#first_time_fit}
 
 ## Data Preparation and Required Packages
 
-Data has to be on some exposure basis with each record (row) containing the premium target.  Each row is a training example.  See premium_data\@ref[premium_data] for more detail. Data must also be hot key encoded before processing as well.
+Data has to be on some exposure basis with each record (row) containing the premium target.  Each row is a training example.  See \@ref(premium_data)[premium data] for more detail. Data must also be one hot key encoded before processing as well.
 
 The `keras` package offers a great way to quickly fit neural nets for research. Refer to the `keras` package for more detail and most everything you need to know about modeling with `keras`. The [Keras site](https://keras.rstudio.com/) is a great place to start.  I'm using the GPU setup of tensorflow--- it takes longer to setup but it fits the model much faster.
 
 ```{r echo = FALSE}
+library(tidyverse)
 library(keras)
+library(tensorflow)
 # keras::install_keras(tensorflow = "gpu")
 
 set.seed(5555)
@@ -35,28 +37,28 @@ x_test <-
   as.matrix
 ```
 
-Note we did not scale any of the features or the output.  This is not best practice.  Because we're not using many features, the dataset is pretty small (e.g. `r n_draw` rows) and we know the range of premiums is limited from `r min(ho_uniform_iid$premium)` to `r max(ho_uniform_iid$premium)` it won't take extra computational time.
+Note we did not scale any of the features or the output.  This is not best practice.  Because we're not using many features, the dataset is pretty small (e.g. `r nrow(x_train) + nrow(x_test)` rows) and we know the range of premiums is limited from `r min(ho_uniform_iid$premium)` to `r max(ho_uniform_iid$premium)` it won't take extra computational time.sav
 
 ## Model Setup
 
 We keep the model pretty simple for now.  The ReLu activation is used to keep things greater than zero and not limited by a maximum.
  
-```{r}
+```{r eval = FALSE}
 model <- 
   keras_model_sequential() %>% 
-  layer_dense(units = 64, activation = 'linear', input_shape = c(x_train %>% ncol)) %>% 
-  layer_dense(units = 32, activation = 'linear') %>%
+  layer_dense(units = 64, activation = 'relu', input_shape = c(x_train %>% ncol)) %>% 
+  layer_dense(units = 32, activation = 'relu') %>%
   layer_dense(units = 1 , activation = 'relu')
 
 model %>% compile(
-  loss = 'mean_absolute_error',
+  loss = 'mse',
   optimizer = optimizer_rmsprop()
 )
 ```
 
 ## First Time leennR
 
-Fitting the model is quite simple. This model will is trained for 300 epochs.
+Fitting the model is quite simple. This model will is trained for 1000 epochs.
 
 ```{r first_time_leennr_fit, eval = FALSE}
 history <- 
@@ -64,34 +66,16 @@ history <-
   fit(
   x_train,
   y_train, 
-  epochs = 300, 
-  batch_size = 128, 
+  epochs = 1000, 
+  batch_size = 1000, 
   validation_split = 0.2,
   )
 ```
 
 ```{r echo = FALSE, include = FALSE, eval = FALSE}
-model %>% save(file = "data/model_first_time_fit.Rds")
+model %>% save_model_tf(file = "models/model_first_time_fit")
 history %>% write_rds("data/history_first_time_fit.Rds")
-```
 
-```{r echo = FALSE}
-load("data/model_first_time_fit.Rds")
-history <- read_rds("data/history_first_time_fit.Rds")
-```
-
-The model summary, the fitting history, and the mean squared error are as follows. 
-
-```{r fig.align = 'center'}
-model %>% summary()
-plot(history)
-mse <- history$metrics$loss %>% tail(., 1) / nrow(x_train) 
-paste0("Mean absolute error on test set: $", sprintf("%.2f", mse))
-```
-
-We can plot how far off the predictions are with histograms.  The results show we have some additional research to perform if we want to refine the accuracy further.
-
-```{r}
 predict <-
   x_train %>% 
   cbind.data.frame(
@@ -110,6 +94,29 @@ predict_test <-
       predict(x_test)) %>% 
   as_tibble
 
+predict %>% write_rds("data/predict_first_time_fit.Rds")
+predict_test %>% write_rds("data/predict_test_first_time_fit.Rds")
+```
+
+```{r echo = FALSE}
+model <- load_model_tf("models/model_first_time_fit")
+history <- read_rds("data/history_first_time_fit.Rds")
+predict <- read_rds("data/predict_first_time_fit.Rds")
+predict_test <- read_rds("data/predict_test_first_time_fit.Rds")
+```
+
+The model summary, the fitting history, and the mean squared error are as follows. 
+
+```{r echo = FALSE, fig.align = 'center'}
+model %>% summary()
+plot(history)
+mae <- history$metrics$loss %>% tail(., 1) / nrow(x_test) 
+paste0("Mean absolute error on test set: $", sprintf("%.2f", mae))
+```
+
+We can plot how far off the predictions are with histograms.  The results show we have some additional research to perform if we want to refine the accuracy further.  We'll explore this further in the next section.
+
+```{r}
 # predict %>%  
 #   ggplot + 
 #   geom_jitter(aes(x = premium, y = abs(y_hat - premium)/premium)) +
@@ -120,7 +127,8 @@ predict %>%
   ggplot + 
   geom_hex(aes(x = premium, y = premium - y_hat)) +
   xlab("Premium") +
-  ylab("Premium - Fitted Value") 
+  ylab("Premium - Fitted Value")
+
 # predict_test %>%  
 #   ggplot + 
 #   geom_jitter(aes(x = premium, y = abs(y_hat - premium)/premium)) +

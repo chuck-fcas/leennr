@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Section 4 Learning Extension of Exposures - Fitting a Dataset | Learning Extension of Exposures with Neural Networks in R</title>
-  <meta name="description" content="Section 4 Learning Extension of Exposures - Fitting a Dataset | Learning Extension of Exposures with Neural Networks in R" />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <title>A.1 Generalized Parallelogram Terms and Formulas | Learning Extension of Exposures with Neural Networks in R</title>
+  <meta name="description" content="A.1 Generalized Parallelogram Terms and Formulas | Learning Extension of Exposures with Neural Networks in R" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Section 4 Learning Extension of Exposures - Fitting a Dataset | Learning Extension of Exposures with Neural Networks in R" />
+  <meta property="og:title" content="A.1 Generalized Parallelogram Terms and Formulas | Learning Extension of Exposures with Neural Networks in R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Section 4 Learning Extension of Exposures - Fitting a Dataset | Learning Extension of Exposures with Neural Networks in R" />
+  <meta name="twitter:title" content="A.1 Generalized Parallelogram Terms and Formulas | Learning Extension of Exposures with Neural Networks in R" />
   
   
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Charles Lindberg, FCAS" />
 
 
-<meta name="date" content="2019-06-07" />
+<meta name="date" content="2020-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="extreme-sample-bias.html">
-<link rel="next" href="data-preparation-and-required-packages.html">
+<link rel="prev" href="generalized-parallelogram-method.html"/>
+
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -56,7 +59,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -135,9 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="extension-of-exposures.html"><a href="extension-of-exposures.html"><i class="fa fa-check"></i><b>1.1</b> Extension of Exposures</a></li>
-<li class="chapter" data-level="1.2" data-path="why-neural-nets.html"><a href="why-neural-nets.html"><i class="fa fa-check"></i><b>1.2</b> Why neural nets?</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="why-neural-nets.html"><a href="why-neural-nets.html#theory"><i class="fa fa-check"></i><b>1.2.1</b> Hypothesis and Theory</a></li>
-</ul></li>
+<li class="chapter" data-level="1.2" data-path="why-neural-nets.html"><a href="why-neural-nets.html"><i class="fa fa-check"></i><b>1.2</b> Why neural nets?</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="ratebooks.html"><a href="ratebooks.html"><i class="fa fa-check"></i><b>2</b> Rate Books and Rate Calculation Examples</a><ul>
 <li class="chapter" data-level="2.1" data-path="homeowners.html"><a href="homeowners.html"><i class="fa fa-check"></i><b>2.1</b> Homeowners</a><ul>
@@ -159,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="extreme-sample-bias.html"><a href="extreme-sample-bias.html"><i class="fa fa-check"></i><b>3.5</b> Extreme Sample Bias</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="first-time.html"><a href="first-time.html"><i class="fa fa-check"></i><b>4</b> Learning Extension of Exposures - Fitting a Dataset</a><ul>
+<li class="chapter" data-level="4" data-path="first-time-fit.html"><a href="first-time-fit.html"><i class="fa fa-check"></i><b>4</b> Learning Extension of Exposures - Fitting a Dataset</a><ul>
 <li class="chapter" data-level="4.1" data-path="data-preparation-and-required-packages.html"><a href="data-preparation-and-required-packages.html"><i class="fa fa-check"></i><b>4.1</b> Data Preparation and Required Packages</a></li>
 <li class="chapter" data-level="4.2" data-path="model-setup.html"><a href="model-setup.html"><i class="fa fa-check"></i><b>4.2</b> Model Setup</a></li>
 <li class="chapter" data-level="4.3" data-path="first-time-leennr.html"><a href="first-time-leennr.html"><i class="fa fa-check"></i><b>4.3</b> First Time leennR</a></li>
@@ -181,6 +181,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="copybooks-and-cobol.html"><a href="copybooks-and-cobol.html"><i class="fa fa-check"></i><b>6.6</b> Copybooks and COBOL</a></li>
 </ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="generalized-parallelogram-method.html"><a href="generalized-parallelogram-method.html"><i class="fa fa-check"></i><b>A</b> Generalized Parallelogram Method</a><ul>
+<li class="chapter" data-level="A.1" data-path="generalized-parallelogram-terms-and-formulas.html"><a href="generalized-parallelogram-terms-and-formulas.html"><i class="fa fa-check"></i><b>A.1</b> Generalized Parallelogram Terms and Formulas</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
 
@@ -201,25 +205,131 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="first_time" class="section level1">
-<h1><span class="header-section-number">Section 4</span> Learning Extension of Exposures - Fitting a Dataset</h1> 
+<div id="generalized-parallelogram-terms-and-formulas" class="section level2">
+<h2><span class="header-section-number">A.1</span> Generalized Parallelogram Terms and Formulas</h2>
+<p>Each term is defined in the table below. Set the beginning of the evaluation period at 0 with each term relative to the beginning of the evaluation period. In addition, make sure to use a common unit a measurement when defining these terms such as a year.</p>
+<p>The subscript <span class="math inline">\(i\)</span> denotes the index of the rate revision in order from 1 to the number of rate changes <span class="math inline">\(n\)</span> in the evaluation period.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb30-2" title="2">  <span class="op">~</span>Term,   <span class="op">~</span>Definition,</a>
+<a class="sourceLine" id="cb30-3" title="3">  <span class="st">&quot;$F$&quot;</span>,   <span class="st">&quot;Rate adjustment factor (onlevel factor).&quot;</span>,</a>
+<a class="sourceLine" id="cb30-4" title="4">  <span class="st">&quot;$T$&quot;</span>,   <span class="st">&quot;Policy term; e.g. 1 year.&quot;</span>,</a>
+<a class="sourceLine" id="cb30-5" title="5">  <span class="st">&quot;$E$&quot;</span>,   <span class="st">&quot;Length of evaluation period.&quot;</span>,</a>
+<a class="sourceLine" id="cb30-6" title="6">  <span class="st">&quot;$D_i$&quot;</span>, <span class="st">&quot;Effective date of a rate revision.&quot;</span>,</a>
+<a class="sourceLine" id="cb30-7" title="7">  <span class="st">&quot;$P_i$&quot;</span>, <span class="st">&quot;Portion of earned exposure subject to new rate.&quot;</span>,</a>
+<a class="sourceLine" id="cb30-8" title="8">  <span class="st">&quot;r_i&quot;</span>,   <span class="st">&quot;Rate change $i$.&quot;</span>,</a>
+<a class="sourceLine" id="cb30-9" title="9">  <span class="st">&quot;A_i&quot;</span>,   <span class="st">&quot;Time when rate change $i$ is fully earned.&quot;</span></a>
+<a class="sourceLine" id="cb30-10" title="10">) <span class="op">%&gt;%</span><span class="st"> </span>kable <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb30-11" title="11"><span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="dt">full_width =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Term
+</th>
+<th style="text-align:left;">
+Definition
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(F\)</span>
+</td>
+<td style="text-align:left;">
+Rate adjustment factor (onlevel factor).
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(T\)</span>
+</td>
+<td style="text-align:left;">
+Policy term; e.g. 1 year.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(E\)</span>
+</td>
+<td style="text-align:left;">
+Length of evaluation period.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(D_i\)</span>
+</td>
+<td style="text-align:left;">
+Effective date of a rate revision.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(P_i\)</span>
+</td>
+<td style="text-align:left;">
+Portion of earned exposure subject to new rate.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+r_i
+</td>
+<td style="text-align:left;">
+Rate change <span class="math inline">\(i\)</span>.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A_i
+</td>
+<td style="text-align:left;">
+Time when rate change <span class="math inline">\(i\)</span> is fully earned.
+</td>
+</tr>
+</tbody>
+</table>
+<p>The rate adjustment factor for the experience period is defined as follows:</p>
+<p><span class="math display" id="eq:F">\[\begin{equation} 
+  F = \frac{(1+r_1),}
+  \tag{A.1}
+\end{equation}\]</span></p>
+<p><span class="math inline">\(P\)</span> can be calculated by the following formula:</p>
+<p>where F is the rate adjustment factor, r is the rate change and P is the
+portion of the earnqd exposure that was subject to the new rate.</p>
+
+<div id="refs" class="references">
+<div>
+<p>Bill, Richard. 1989. “Generalized Earned Premium Rate Adjustment Factors.” <em>Proceedings of the Casualty Actuarial Society</em> LXXVI (145). <a href="https://www.casact.org/pubs/forum/89fforum/89ff201.pdf">https://www.casact.org/pubs/forum/89fforum/89ff201.pdf</a>.</p>
 </div>
+</div>
+</div>
+<!-- </div> -->
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="extreme-sample-bias.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-preparation-and-required-packages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="generalized-parallelogram-method.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
 <script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
 <script src="libs/gitbook/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -227,12 +337,11 @@ gitbook.start({
 "github": false,
 "facebook": false,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -240,10 +349,14 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "<this doesn't work, but it should be the github page where this book lives>/4.00-first_time_fit.Rmd",
+"link": "<this doesn't work, but it should be the github page where this book lives>/99.01-generalized_parallelogram_method.Rmd",
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -262,8 +375,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
